@@ -65,13 +65,22 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "RegisterForm")) {
-  $insertSQL = sprintf("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO users (id, username, password, email, subscribe) VALUES (%s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['Username'], "text"),
                        GetSQLValueString($_POST['Username'], "text"),
                        GetSQLValueString($_POST['Password'], "text"),
-                       GetSQLValueString($_POST['Email'], "text"));
+                       GetSQLValueString($_POST['Email'], "text"),
+                       GetSQLValueString($_POST['subscribe'], "text"));
 
   mysql_select_db($database_connection, $connection);
   $Result1 = mysql_query($insertSQL, $connection) or die(mysql_error());
+
+  $insertGoTo = "#!/registration_confirmation.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+    $insertGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $insertGoTo));
 }
 
 if (!function_exists("GetSQLValueString")) {
@@ -112,8 +121,6 @@ if (isset($_GET['totalRows_raw'])) {
 }
 $totalPages_raw = ceil($totalRows_raw/$maxRows_raw)-1;
 
-
-
 $queryString_raw = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
@@ -132,7 +139,6 @@ $queryString_raw = sprintf("&totalRows_raw=%d%s", $totalRows_raw, $queryString_r
 ?>
 <?php
 
-
 $loginFormAction = $_SERVER['PHP_SELF'];
 if (isset($_GET['accesscheck'])) {
   $_SESSION['PrevUrl'] = $_GET['accesscheck'];
@@ -141,69 +147,26 @@ if (isset($_GET['accesscheck'])) {
 if (isset($_POST['email'])) {
   $loginUsername=$_POST['email'];
   $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "index.php";
-  $MM_redirectLoginFailed = "signin.php";
-  $MM_redirecttoReferrer = true;
+  $MM_fldUserAuthorization = "subscribe";
+  $MM_redirectLoginSuccess = "#!/index.php";
+  $MM_redirectLoginFailed = "index.php";
+  $MM_redirecttoReferrer = false;
   mysql_select_db($database_connection, $connection);
-  
-  $LoginRS__query=sprintf("SELECT email, password FROM users WHERE email=%s AND password=%s",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
+  	
+  $LoginRS__query=sprintf("SELECT email, password, subscribe FROM users WHERE email=%s AND password=%s",
+  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
    
   $LoginRS = mysql_query($LoginRS__query, $connection) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
   if ($loginFoundUser) {
-     $loginStrGroup = "";
+    
+    $loginStrGroup  = mysql_result($LoginRS,0,'subscribe');
     
 	if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
-
-    if (isset($_SESSION['PrevUrl']) && true) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
-    }
-    header("Location: " . $MM_redirectLoginSuccess );
-  }
-  else {
-    header("Location: ". $MM_redirectLoginFailed );
-  }
-}
-?>
-<?php
-// *** Validate request to login to this site.
-if (!isset($_SESSION)) {
-  session_start();
-}
-
-$loginFormAction = $_SERVER['PHP_SELF'];
-if (isset($_GET['accesscheck'])) {
-  $_SESSION['PrevUrl'] = $_GET['accesscheck'];
-}
-
-if (isset($_POST['email'])) {
-  $loginUsername=$_POST['email'];
-  $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "all_products.php";
-  $MM_redirectLoginFailed = "signin.php";
-  $MM_redirecttoReferrer = true;
-  mysql_select_db($database_connection, $connection);
-  
-  $LoginRS__query=sprintf("SELECT email, password FROM users WHERE email=%s AND password=%s",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
-   
-  $LoginRS = mysql_query($LoginRS__query, $connection) or die(mysql_error());
-  $loginFoundUser = mysql_num_rows($LoginRS);
-  if ($loginFoundUser) {
-     $loginStrGroup = "";
-    
-	if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
-    //declare two session variables and assign them
-    $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
-
-    if (isset($_SESSION['PrevUrl']) && true) {
+    $_SESSION['MM_UserGroup'] = $loginStrGroup;
+    if (isset($_SESSION['PrevUrl']) && false) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
     }
     header("Location: " . $MM_redirectLoginSuccess );
@@ -253,6 +216,15 @@ if (isset($_POST['email'])) {
           <div class="user_login_info">
                   <nav class="user-nav">
                     <ul>
+                    <li><img src="images/icons/white/user.png" alt="" title="" />
+                        <span><?php if (isset($_SESSION['MM_Username']))  
+                                      {
+                                          echo '' .$_SESSION['MM_Username'];
+                                      } 
+                                      else {
+                                          echo 'Welcome Guest';}?>
+                        </span>
+                      </li>
                       <li><a href="#" data-popup=".popup-categories" class="open-popup"><img src="images/icons/white/form.png" alt="" title="" /><span>Store</span></a></li>
                       <li><a href="itenerary.php" class="close-panel"><img src="images/icons/white/briefcase.png" alt="" title="" /><span>Itenerary</span></a></li>
                       <li><a href="partnership.php" class="external"><img src="images/icons/white/team.png" alt="" title="" /><span>Partnership</span></a></li>
@@ -302,7 +274,15 @@ if (isset($_POST['email'])) {
                        <img src="images/colors/blue/app_details.png" class="img-responsive">
                        </div>
                        <div class="col-md-12" style="padding-top:100px; color:#ffffff;"><center>
-                       		<a href="packages.html">Access premium streams</a>
+                       <span>
+                       <?php if (isset($_SESSION['MM_Username'], $_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] == 'Premium') 
+                                      {
+                                          echo '<a href="all_products.php" class="external">Enjoy Premium Streams</a>';
+                                      } 
+                                      else {
+                                          echo '<a href="packages.html">Access Premium Streams</a>';
+										  }?>
+                       		</span>
                          </center>   
                        </div>
                   </div>
@@ -337,6 +317,7 @@ if (isset($_POST['email'])) {
             <input type="password" name="password" value="" class="form_input required" placeholder="Password" />
             <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
             <input type="submit" name="submit" class="form_submit" id="submit" value="SIGN IN" />
+            
             </form>
             <div class="signup_bottom">
             <p>Don't have an account?</p>
@@ -358,6 +339,7 @@ if (isset($_POST['email'])) {
             <input type="password" name="Password" value="" class="form_input required" placeholder="password" />
             <input type="submit" name="submit" class="form_submit" id="submit" value="SIGN UP" />
             <input type="hidden" name="MM_insert" value="RegisterForm">
+            <input type="hidden" name="subscribe" value="Ordinary"/>
             </form>
             <p>&nbsp;</p>
             </div>
@@ -423,7 +405,6 @@ if (isset($_POST['email'])) {
 </html>
 <?php
 mysql_free_result($raw);
-
 
 mysql_free_result($user);
 ?>

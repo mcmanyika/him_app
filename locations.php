@@ -97,7 +97,9 @@ $queryString_raw = sprintf("&totalRows_raw=%d%s", $totalRows_raw, $queryString_r
       
        <div class="page_content">
             <div class="blog-posts" style="background-color: #000000; opacity: 0.6; color:#ffffff;">
+            <div class="row">
              <h2 class="page_title">Locations</h2>
+             </div>
               <ul class="posts">
               <?php do { ?>
                 <li>

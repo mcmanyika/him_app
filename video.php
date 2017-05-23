@@ -128,7 +128,10 @@ $queryString_prod = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recordset1,
               <ul class="posts">
                <li>
                   <div class="post_entry">
-                        <div class="post_title"><h2><a href="live.php"  style="color:red">Live Events</a></h2>
+                        <div class="post_title">
+                        <div class="row">
+                        	<h2><a href="live.php"  style="color:red">Live Events</a></h2>
+                        </div>
                        </div>
                     </div> 
                 </li>

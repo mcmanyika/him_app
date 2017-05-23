@@ -127,8 +127,9 @@ $queryString_prod = sprintf("&totalRows_prod=%d%s", $totalRows_prod, $queryStrin
          
        <div class="page_content">
             <div class="blog-posts" style="background-color: #000000; opacity: 0.6;">
-            <h2 class="page_title"><a href="#" data-panel="right" class="open-panel">Browse by Category</a></h2>
+           <div class="row"><h2 class="page_title"><a href="#" data-panel="right" class="open-panel">Browse by Category</a></h2></div>
               <ul class="posts">
+               
               <?php do { ?>
                   <nav class="user-nav">
                     <ul>
