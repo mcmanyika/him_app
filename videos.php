@@ -55,14 +55,28 @@ $totalRows_vids = mysql_num_rows($vids);
 <link rel="stylesheet" href="css/colors/blue.css">
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+.box_white {
+	border-width:1px;
+	border-color:#ffffff;
+	border-style:solid;
+	padding:5px;
+	display: block;
+    margin: auto;
+}
+.div_width {
+	width:100% !important
+	}
+
+</style>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
 <body id="mobile_wrap">
 
     <div class="pages">
-      <div data-page="projects" class="page no-toolbar no-navbar homepage">
+      <div data-page="projects" class="page no-toolbar no-navbar" style="background: url(images/colors/blue/blank.png) no-repeat center center;">
         <div class="page-content">
         
          <div class="navbarpages">
@@ -73,7 +87,10 @@ $totalRows_vids = mysql_num_rows($vids);
                <a href="http://www.heartfeltonline.org/mobile/events.php"><img src="images/icons/white/back.png" alt="" title="" /></a>
              </div>
             </div>
-         <div id="pages_maincontent"><!-- InstanceBeginEditable name="maincontent" -->
+         <div id="pages_maincontent">
+              <div class="page_content"> 
+              <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
+		 <!-- InstanceBeginEditable name="maincontent" -->
 
           
               <h2 class="page_title">Video Gallery</h2>
@@ -87,7 +104,8 @@ $totalRows_vids = mysql_num_rows($vids);
                     <?php } while ($row_vids = mysql_fetch_assoc($vids)); ?>     
                   </div>
          <!-- InstanceEndEditable -->
-              
+              </div>
+              </div>
       	 </div>
   		</div>
   </body>

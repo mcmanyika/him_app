@@ -76,7 +76,21 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
 <link rel="stylesheet" href="css/colors/blue.css">
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+.box_white {
+	border-width:1px;
+	border-color:#ffffff;
+	border-style:solid;
+	padding:5px;
+	display: block;
+    margin: auto;
+}
+.div_width {
+	width:100% !important
+	}
+
+</style>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
@@ -94,7 +108,10 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
                <a href="http://www.heartfeltonline.org/mobile/events.php"><img src="images/icons/white/back.png" alt="" title="" /></a>
              </div>
             </div>
-         <div id="pages_maincontent"><!-- InstanceBeginEditable name="maincontent" -->
+         <div id="pages_maincontent">
+              <div class="page_content"> 
+              <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
+		 <!-- InstanceBeginEditable name="maincontent" -->
          
 		 <div class="pages">
   <div data-page="projects" class="page no-toolbar no-navbar">
@@ -136,7 +153,8 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
 </div>
 		 
 		 <!-- InstanceEndEditable -->
-              
+              </div>
+              </div>
       	 </div>
   		</div>
   </body>

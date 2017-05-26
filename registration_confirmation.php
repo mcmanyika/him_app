@@ -10,11 +10,12 @@
      <div id="pages_maincontent">
               <div class="page_content"> 
               <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
-              <div class="row">
+              
               <h2 class="page_title">Thank You</h2>
-              </div>
-              	Your registration has been successful, enjoy our free music and sermons from Apostle T and Pastor C Vutabwashe. To access our <strong>Premuim</strong> streams  <a href="packages.html">subscribe here!!</a>
             
+              	Your registration has been successful, enjoy our free music and sermons from Apostle T and Pastor C Vutabwashe. To access our <strong>Premuim</strong> streams  <a href="packages.html">subscribe here!!</a>
+            <br /><br />
+            <a href="index.php#" data-popup=".popup-login" class="open-popup">Click to Sign in</a>
               </div> 
               
               </div>

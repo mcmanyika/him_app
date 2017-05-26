@@ -102,28 +102,43 @@ $queryString_prod = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recordset1,
 <link rel="stylesheet" href="css/colors/blue.css">
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+.box_white {
+	border-width:1px;
+	border-color:#ffffff;
+	border-style:solid;
+	padding:5px;
+	display: block;
+    margin: auto;
+}
+.div_width {
+	width:100% !important
+	}
+
+</style>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
 <body id="mobile_wrap">
 
     <div class="pages">
-      <div data-page="projects" class="page no-toolbar no-navbar homepage">
+      <div data-page="projects" class="page no-toolbar no-navbar" style="background: url(images/colors/blue/blank.png) no-repeat center center;">
         <div class="page-content">
         
          <div class="navbarpages">
-           <div class="nav_left_logo"><a href="index.php" class="external"><img src="images/logo.png" alt="" title="" /></a></div>
+           <div class="nav_left_logo"><a href="index.php"><img src="images/logo.png" alt="" title="" /></a></div>
              <div class="nav_right_button">
                <a href="menu.html"><img src="images/icons/white/menu.png" alt="" title="" /></a>
                <a href="#" data-panel="right" class="open-panel"><img src="images/icons/white/search.png" alt="" title="" /></a>
                <a href="http://www.heartfeltonline.org/mobile/events.php"><img src="images/icons/white/back.png" alt="" title="" /></a>
              </div>
             </div>
-         <div id="pages_maincontent"><!-- InstanceBeginEditable name="maincontent" -->
+         <div id="pages_maincontent">
+              <div class="page_content"> 
+              <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
+		 <!-- InstanceBeginEditable name="maincontent" -->
          
-       <div class="page_content">
-            <div class="blog-posts" style="background-color: #000000; opacity: 0.6; color:#ffffff">
 <h2 class="page_title"><a href="#" data-panel="right" class="open-panel">Browse by Category</a></h2>
               <ul class="posts">
                <li>
@@ -151,9 +166,6 @@ $queryString_prod = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recordset1,
             <div id="showLess"><img src="images/load_posts_disabled.png" alt="" title="" /></div> 
             </div>
       
-      
-      </div>
-      </div>
       <table border="1" align="center">
         <tr>
           <td>id</td>
@@ -171,43 +183,11 @@ $queryString_prod = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recordset1,
           </tr>
           <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
       </table>
-      <br>
-      <table border="0" style="color:#ffffff">
-        <tr>
-          <td><?php if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
-              <a href="<?php printf("%s?pageNum_Recordset1=%d%s", $currentPage, 0, $queryString_Recordset1); ?>">First</a>
-              <?php } // Show if not first page ?></td>
-          <td><?php if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
-              <a href="<?php printf("%s?pageNum_Recordset1=%d%s", $currentPage, max(0, $pageNum_Recordset1 - 1), $queryString_Recordset1); ?>">Previous</a>
-              <?php } // Show if not first page ?></td>
-          <td><?php if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
-              <a href="<?php printf("%s?pageNum_Recordset1=%d%s", $currentPage, min($totalPages_Recordset1, $pageNum_Recordset1 + 1), $queryString_Recordset1); ?>">Next</a>
-              <?php } // Show if not last page ?></td>
-          <td><?php if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
-              <a href="<?php printf("%s?pageNum_Recordset1=%d%s", $currentPage, $totalPages_Recordset1, $queryString_Recordset1); ?>">Last</a>
-              <?php } // Show if not last page ?></td>
-        </tr>
-      </table>
-Records <?php echo ($startRow_Recordset1 + 1) ?> to <?php echo min($startRow_Recordset1 + $maxRows_Recordset1, $totalRows_Recordset1) ?> of <?php echo $totalRows_Recordset1 ?> <!-- InstanceEndEditable -->
-              
+      <!-- InstanceEndEditable -->
+              </div>
+              </div>
       	 </div>
   		</div>
-        
-        <div class="panel panel-right panel-cover"> 
-      <div class="user_login_info">
-         <nav class="user-nav">
-            <h3>BROWSE BY CATEGORY</h3>
-            <ul>
-              <li><a href="store/couples.html"><span>Couples</span></a></li>
-              <li><a href="store/pioneers.html" class="close-panel"><span>Pioneers</span></a></li>
-              <li><a href="store/sunday.html" class="close-panel"><span>Sunday Service</span></a></li>
-              <li><a href="store/mentorship.html" class="close-panel"><span>Mentorship</span></a></li>
-              <li><a href="store/leaders.html" class="close-panel"><span>Leaders seminar</span></a></li>
-              
-            </ul>
-        </nav>
-       </div>
-    </div>
   </body>
 <!-- InstanceEnd --></html>
 <?php

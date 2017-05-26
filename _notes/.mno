@@ -1,1 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="PageAccessControlMethod" value="useAccessList" />	<infoitem key="PageAccessControl" value="Ordinary,Premium" />	<infoitem key="MM_Session1" value="User" />	<infoitem key="MM_Session_Count" value="1" /></info>
+﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="PageAccessControlMethod" value="dontUseAccessList" />	<infoitem key="PageAccessControl" value="Ordinary,Premium" />	<infoitem key="MM_Session1" value="User" />	<infoitem key="MM_Session_Count" value="1" /></info>

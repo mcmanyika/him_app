@@ -28,6 +28,10 @@ if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
 }
 ?>
 <?php
+//initialize the session
+if (!isset($_SESSION)) {
+  session_start();
+}
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -193,7 +197,7 @@ if (isset($_POST['email'])) {
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 .box_white {
 	border-width:1px;
@@ -215,16 +219,14 @@ if (isset($_POST['email'])) {
     <div class="panel panel-left panel-cover" style="background-color:rgb(0,102,153);">
           <div class="user_login_info">
                   <nav class="user-nav">
-                    <ul>
-                    <li><img src="images/icons/white/user.png" alt="" title="" />
-                        <span><?php if (isset($_SESSION['MM_Username']))  
-                                      {
-                                          echo '' .$_SESSION['MM_Username'];
+                    <ul><?php if (isset($_SESSION['MM_Username']))  
+                                      { 
+									  echo '<li><img src="images/icons/white/home.png" /><span><a href="account.php" class="close-panel">My Account</a></span></li>';
+									  }
+									  else {
+                      						echo '<li><img src="images/icons/white/user.png" /><span>Welcome Guest</span></li>';
                                       } 
-                                      else {
-                                          echo 'Welcome Guest';}?>
-                        </span>
-                      </li>
+                         ?>
                       <li><a href="#" data-popup=".popup-categories" class="open-popup"><img src="images/icons/white/form.png" alt="" title="" /><span>Store</span></a></li>
                       <li><a href="itenerary.php" class="close-panel"><img src="images/icons/white/briefcase.png" alt="" title="" /><span>Itenerary</span></a></li>
                       <li><a href="partnership.php" class="external"><img src="images/icons/white/team.png" alt="" title="" /><span>Partnership</span></a></li>
@@ -252,14 +254,26 @@ if (isset($_POST['email'])) {
          <nav class="user-nav">
             <h3>BROWSE BY CATEGORY</h3>
             <ul>
-              <li><a href="store.php?category=couples" class="close-panel"><span>Couples</span></a></li>
-              <li><a href="store.php?category=pioneers" class="close-panel"><span>Pioneers</span></a></li>
-              <li><a href="store.php?category=ladies" class="close-panel"><span>Ladies Meeting</span></a></li>
-              <li><a href="store.php?category=sunday" class="close-panel"><span>Sunday Service</span></a></li>
-              <li><a href="store.php?category=mentorship" class="close-panel"><span>Mentorship</span></a></li>
-              <li><a href="store.php?category=leaders" class="close-panel"><span>Leaders seminar</span></a></li>
-              
-            </ul>
+            <?php if (isset($_SESSION['MM_Username'], $_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] == 'Premium') 
+						  {
+							  echo '<li><a href="premium_store_cat.php?category=couples" class="close-panel"><span>Couples</span></a></li>
+              <li><a href="premium_store_cat.php?category=pioneers" class="close-panel"><span>Pioneers</span></a></li>
+              <li><a href="premium_store_cat.php?category=ladies" class="close-panel"><span>Ladies Meeting</span></a></li>
+              <li><a href="premium_store_cat.php?category=sunday" class="close-panel"><span>Sunday Service</span></a></li>
+              <li><a href="premium_store_cat.php?category=mentorship" class="close-panel"><span>Mentorship</span></a></li>
+              <li><a href="premium_store_cat.php?category=leaders" class="close-panel"><span>Leaders seminar</span></a></li>';
+						  } 
+						  else {
+							  echo '<li><a href="free_store_cat.php?category=couples" class="close-panel"><span>Couples</span></a></li>
+              <li><a href="free_store_cat.php?category=pioneers" class="close-panel"><span>Pioneers</span></a></li>
+              <li><a href="free_store_cat.php?category=ladies" class="close-panel"><span>Ladies Meeting</span></a></li>
+              <li><a href="free_store_cat.php?category=sunday" class="close-panel"><span>Sunday Service</span></a></li>
+              <li><a href="free_store_cat.php?category=mentorship" class="close-panel"><span>Mentorship</span></a></li>
+              <li><a href="free_store_cat.php?category=leaders" class="close-panel"><span>Leaders seminar</span></a></li>';
+							  }
+					     ?>
+                         
+                         </ul>
         </nav>
        </div>
     </div>
@@ -273,16 +287,18 @@ if (isset($_POST['email'])) {
                        <div class="col-md-12" style="">
                        <img src="images/colors/blue/app_details.png" class="img-responsive">
                        </div>
-                       <div class="col-md-12" style="padding-top:100px; color:#ffffff;"><center>
-                       <span>
+                       <div class="col-md-12" style="padding-top:60px; color:#ffffff;"><center>
+                       <div class="col-sm-10">
                        <?php if (isset($_SESSION['MM_Username'], $_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] == 'Premium') 
-                                      {
-                                          echo '<a href="all_products.php" class="external">Enjoy Premium Streams</a>';
-                                      } 
-                                      else {
-                                          echo '<a href="packages.html">Access Premium Streams</a>';
-										  }?>
-                       		</span>
+						  {
+							  echo '<a href="premium_store.php"><img src="images/premium.png" class="img-responsive"></a>';
+						  } 
+						  else {
+							  echo '<a href="free_store.php"><img src="images/limited.png" class="img-responsive"></a> <br />
+							  <a href="packages.php">Register here to access unlimited materials</a>';
+							  }
+					     ?>
+                       		</div>
                          </center>   
                        </div>
                   </div>
@@ -388,7 +404,7 @@ if (isset($_POST['email'])) {
       <p>Search by categories.</p>
       <ul class="social_share">
       <?php do { ?>
-      <li><div style="border-width: 1px; border-color: #fff; border-style: solid "><a href="<?php echo $row_raw['link']; ?>" class="external" style="color: #fff"><?php echo $row_raw['name']; ?></a></div></li>
+      <li><div style="border-width: 1px; border-color: #fff; border-style: solid "><a href="<?php echo $row_raw['link']; ?>"  class="close-popup" style="color: #fff"><?php echo $row_raw['name']; ?></a></div></li>
       <?php } while ($row_raw = mysql_fetch_assoc($raw)); ?>
       </ul>
       <div class="close_popup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
@@ -397,7 +413,7 @@ if (isset($_POST['email'])) {
     
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/framework7.js"></script>
+<script type="text/javascript" src="js/framework7.js"></script><?php echo $row_raw['']; ?>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/email.js"></script>

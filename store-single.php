@@ -75,6 +75,7 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body id="mobile_wrap">
 
@@ -90,10 +91,9 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
        <a href="events.php"><img src="images/icons/white/back.png" alt="" title="" /></a>
        </div>
      </div>
-     <div id="pages_maincontent" style="background-color: #000000; opacity: 0.6;">
-          <div class="post_single" style="background-color: #000000; opacity: 0.6;">
-
-            <div class="featured_image">
+     <div id="pages_maincontent">
+          <div class="page_content">
+            <div class="blog-posts" style="background-color: #000000; opacity: 0.6;">
             <div style="font-size: 24px; color:#ffffff"><center>
 
               <?php echo $row_DetailRS1['title']; ?></center></div>
@@ -103,7 +103,7 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
               <img src="<?php echo $row_DetailRS1['img']; ?>" alt="" title="" />
               
               <div style="padding: 20px">
-              <div class="signup_bottom">
+              <div class="row">
                 <audio controls>
                     <source src="<?php echo $row_DetailRS1['link']; ?>" type="audio/mpeg">
                   Your browser does not support the audio element.
@@ -111,11 +111,6 @@ $totalPages_DetailRS1 = ceil($totalRows_DetailRS1/$maxRows_DetailRS1)-1;
                 </div>
             </div>
                  
-            <div class="page_content"> 
-              <div class="entry">
-              
-              </div>
-            </div>
             
           </div>
          

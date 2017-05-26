@@ -9,7 +9,9 @@
      <div id="pages_maincontent">
               <div class="page_content"> 
               <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
-              <h2 class="page_title">Donations</h2>
+            
+              	<h2 class="page_title">Donations</h2>
+             
 			<p>We are supported by listeners like you. With your donation of <strong>$5/month</strong>, help us with our mission and get access to the premium streams for the life of your donation!
               </p>
               <p><center>
@@ -20,10 +22,10 @@
                         <tr><td><input type="hidden" name="on0" value="Recurring Donations">Recurring Donations</td></tr><tr><td style="color:#f90"><select name="os0">
                             <option value="$5/month - Premium Access">$5/month - Premium Access </option>
                             <option value="$10/month - Premium Access">$10/month - Premium Access </option>
-                            <option value="$20/month - Premium Access">$20/month - Premium Access </option>
-                            <option value="$30/month - Premium Access">$30/month - Premium Access </option>
-                            <option value="$40/month - Premium Access">$40/month - Premium Access </option>
-                            <option value="$50/month - Premium Access">$50/month - Premium Access </option>
+                            <option value="$20/month - Premium Access">$20/ 6 month - Premium Access </option>
+                            <option value="$30/month - Premium Access">$30/ 7 month - Premium Access </option>
+                            <option value="$40/month - Premium Access">$40/ 9 month - Premium Access </option>
+                            <option value="$50/month - Premium Access">$50/ 12 month - Premium Access </option>
                         </select> </td></tr>
                         </table><br /> <br />
                         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">

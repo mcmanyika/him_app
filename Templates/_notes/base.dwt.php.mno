@@ -1,1 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="UD_DetailRS1" value="name:id;datatype:int,name:title;datatype:string,name:description;datatype:blob,name:writer;datatype:string,name:date;datatype:date" /></info>
+﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="UD_DetailRS1" value="name:id;datatype:int,name:title;datatype:string,name:description;datatype:blob,name:writer;datatype:string,name:date;datatype:date" />	<infoitem key="UD_raw" value="name:id;datatype:int,name:name;datatype:string,name:link;datatype:blob" /></info>

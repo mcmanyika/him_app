@@ -30,27 +30,14 @@
      <div id="pages_maincontent">
        <div class="page_content">
             <div class="blog-posts" style="background-color: #000000; opacity: 0.6;">
-            <div class="row">
+            
              	<h2 class="page_title">Partnership</h2>
-             </div>
+             
               <div class="col-md-12" style="font-size: 20px; color: #ccc; text-align: center;">Like the women in Luke 8 who supported the ministry of Jesus Christ on earth, we continue to partner with the servants of God assigned to perpetuate the ministry of Christ on earth. <br /><br />
                   To make different payments, choose options below.
                       <br /><br /><h3>Mobile cash or Paypal</h3>
 
-                  <span> Building Biller Code - 51876<br /></span>
-
-<div class="loginform">
-	<center>
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="ZFBTHVJG7ZDAE">
-     <div style="width:280px">
-		<input type="submit"  class="form_submit"  value="Click to pay for  Building Fund" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
- </center>
-</div>
+                 
 
 </span>
                   Offering Biller Code - 51874<br />

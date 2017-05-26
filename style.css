@@ -560,9 +560,10 @@ overflow: scroll;
 -webkit-overflow-scrolling: touch;
 }
 .page_content{
-width:90%;
+width:100%;
 padding:0 5%;
 margin:10px 0 20px 0;
+color:#FFF
 }
 .page_content_menu{
 width:90%;

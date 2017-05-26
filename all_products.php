@@ -105,7 +105,21 @@ $queryString_prod = sprintf("&totalRows_prod=%d%s", $totalRows_prod, $queryStrin
 <link rel="stylesheet" href="css/colors/blue.css">
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+.box_white {
+	border-width:1px;
+	border-color:#ffffff;
+	border-style:solid;
+	padding:5px;
+	display: block;
+    margin: auto;
+}
+.div_width {
+	width:100% !important
+	}
+
+</style>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
@@ -123,34 +137,32 @@ $queryString_prod = sprintf("&totalRows_prod=%d%s", $totalRows_prod, $queryStrin
                <a href="http://www.heartfeltonline.org/mobile/events.php"><img src="images/icons/white/back.png" alt="" title="" /></a>
              </div>
             </div>
-         <div id="pages_maincontent"><!-- InstanceBeginEditable name="maincontent" -->
+         <div id="pages_maincontent">
+              <div class="page_content"> 
+              <div style="background-color: #000000; opacity: 0.6; color:#ffffff; padding:10px;">
+		 <!-- InstanceBeginEditable name="maincontent" -->
          
-       <div class="page_content">
-            <div class="blog-posts" style="background-color: #000000; opacity: 0.6;">
-           <div class="row"><h2 class="page_title"><a href="#" data-panel="right" class="open-panel">Browse by Category</a></h2></div>
+       
+           <h2 class="page_title"><a href="#" data-panel="right" class="open-panel">Browse by Category</a></h2>
               <ul class="posts">
                
               <?php do { ?>
                   <nav class="user-nav">
                     <ul>
-                     <li><img src="images/headphones1.png">                        
-                      <span style="color:#f5f5f5">
-                      <h1><a href="store-single.php?recordID=<?php echo $row_prod['id']; ?>" class="external" style="color:#f5f5f5">
-                      <?php echo $row_prod['title']; ?></a></h1><br />
-                      <b>Category: <?php echo $row_prod['category']; ?></b></span>
+                     <li><center><img src="images/headphones1.png" class="img-responsive"> </center>                       
+                      <span>
+                      <a href="store-single.php?recordID=<?php echo $row_prod['id']; ?>" style=" font-size:16px !important">
+                      <?php echo $row_prod['title']; ?></a><br />
+                      <b style="font-size:11px !important">Category: <?php echo $row_prod['category']; ?></b></span>
                      </li>
                    </ul>
                 <?php } while ($row_prod = mysql_fetch_assoc($prod)); ?>
               </ul>
-              
             <div class="clear"></div>  
             <div id="loadMore"><img src="images/load_posts.png" alt="" title="" /></div> 
             <div id="showLess"><img src="images/load_posts_disabled.png" alt="" title="" /></div> 
             </div>
       
-      </div>
-      
-      </div>
   
     <div class="panel panel-right panel-cover"> 
       <div class="user_login_info">
@@ -168,7 +180,8 @@ $queryString_prod = sprintf("&totalRows_prod=%d%s", $totalRows_prod, $queryStrin
        </div>
     </div>
   <!-- InstanceEndEditable -->
-              
+              </div>
+              </div>
       	 </div>
   		</div>
   </body>
